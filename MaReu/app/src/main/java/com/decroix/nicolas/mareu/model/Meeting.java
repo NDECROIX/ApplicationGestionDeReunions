@@ -9,9 +9,9 @@ public class Meeting {
     private String date;
     private String timeStart;
     private String timeEnd;
-    private List<String> email;
+    private String email;
 
-    public Meeting(String name, String location, String date, String timeStart, String timeEnd, List<String> email) {
+    public Meeting(String name, String location, String date, String timeStart, String timeEnd, String email) {
         this.name = name;
         this.location = location;
         this.date = date;
@@ -42,7 +42,7 @@ public class Meeting {
         return timeEnd;
     }
 
-    public List<String> getEmail() {
+    public String getEmail() {
         return email;
     }
 
@@ -69,7 +69,7 @@ public class Meeting {
         this.timeEnd = timeEnd;
     }
 
-    public void setEmail(List<String> email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 }
