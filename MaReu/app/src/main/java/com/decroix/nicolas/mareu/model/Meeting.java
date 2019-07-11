@@ -1,45 +1,60 @@
 package com.decroix.nicolas.mareu.model;
 
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
+/**
+ * Model object representing a Meeting
+ */
 public class Meeting {
 
-    private String name;
+    /**
+     * Subject
+     */
+    private String subject;
+
+    /**
+     * Meeting room
+     */
     private String location;
-    private String date;
-    private String timeStart;
-    private String timeEnd;
+
+    /**
+     * Date and time
+     */
+    private Date dateTime;
+
+    /** Participants' email address */
     private String email;
 
-    public Meeting(String name, String location, String date, String timeStart, String timeEnd, String email) {
-        this.name = name;
+    /**
+     * Constructor
+     *
+     * @param subject
+     * @param location
+     * @param dateTime
+     * @param email
+     */
+    public Meeting(String subject, String location, Date dateTime, String email) {
+        this.subject = subject;
         this.location = location;
-        this.date = date;
-        this.timeStart = timeStart;
-        this.timeEnd = timeEnd;
+        this.dateTime = dateTime;
         this.email = email;
     }
 
     // GETTER
 
-    public String getName() {
-        return name;
+    public String getSubject() {
+        return subject;
     }
 
     public String getLocation() {
         return location;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public String getTimeStart() {
-        return timeStart;
-    }
-
-    public String getTimeEnd() {
-        return timeEnd;
+    public Date getDateTime() {
+        return dateTime;
     }
 
     public String getEmail() {
@@ -48,28 +63,24 @@ public class Meeting {
 
     // SETTER
 
-
-    public void setName(String name) {
-        this.name = name;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public void setLocation(String location) {
         this.location = location;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public void setTimeStart(String timeStart) {
-        this.timeStart = timeStart;
-    }
-
-    public void setTimeEnd(String timeEnd) {
-        this.timeEnd = timeEnd;
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String meetingDateToString() {
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm", Locale.FRANCE);
+        return subject + " - " + dateFormat.format(dateTime) + " - " + location;
     }
 }

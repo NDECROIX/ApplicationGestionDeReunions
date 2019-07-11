@@ -1,11 +1,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.decroix.nicolas.mareu.ListMeetingActivity">
+    tools:context="com.decroix.nicolas.mareu.controller.activities.MeetingActivity">
     <item
         android:id="@+id/action_sort"
         android:orderInCategory="100"
         android:title="@string/action_sort"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
-        app:showAsAction="ifRoom" />
+        android:icon="@drawable/ic_filter_list_24"
+        app:showAsAction="always">
+        <menu>
+            <item android:id="@+id/action_sort_date"
+                android:title="Trier par date" />
+            <item android:id="@+id/action_sort_salle"
+                android:title="Trier par salle" />
+        </menu>
+    </item>
 </menu>
