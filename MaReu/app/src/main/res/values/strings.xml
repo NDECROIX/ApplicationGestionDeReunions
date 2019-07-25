@@ -4,8 +4,43 @@
 
     <!-- AddMeetingFragment -->
     <string name="add_meeting_title_toolbar">Ajouter une réunion</string>
-    <string name="one_or_more_empty_fields">Veuillez remplir tous les champs</string>
-    <string name="date_format">dd/MM/yyyyHH:mm</string>
+    <string name="add_meeting_home_item">Back to ListMeetingFragment</string>
+
+    <string name="toast_room_used">Salle de réunion indisponible</string>
+    <string name="toast_empty_fields">Veuillez remplir tous les champs</string>
+    <string name="toast_error_date_time_format">Erreur dans le format de l\'horodatage</string>
+    <string name="toast_error_mails_input">Erreur sur la saisie des adresses mails</string>
+    <string name="toast_add_meeting">Réunion ajoutée</string>
+    <string name="toast_update_meeting">Réunion mis à jour</string>
+
+    <string name="date_time_format">dd/MM/yyyyHH:mm</string>
+
+    <string name="hint_subject_meeting">Sujet de la réunion</string>
+    <string name="hint_meeting_room">Salle de réunion</string>
+    <string name="hint_meeting_date">dd/MM/yyyy</string>
+    <string name="hint_meeting_time">HH:mm</string>
+    <string name="hint_meeting_mails">Adresse email des participants</string>
+
+    <string name="desc_date_of_meeting_picker">Date of meeting</string>
+    <string name="desc_time_of_meeting_picker">Select time meeting</string>
+    <string name="desc_mails_of_meeting_picker">Select mails meeting</string>
+    <string name="date_picker_tag">datePicker</string>
+    <string name="time_picker_tag">timePicker</string>
+
+    <string name="mails_picker_title">Participants</string>
+
+    <!-- ListMeetingFragment-->
+    <string name="item_sort_by_date">Trier par date</string>
+    <string name="item_sort_by_room">Trier par salle</string>
+
+    <string name="desc_drawable_meeting_circle">meeting_circle</string>
+    <string name="desc_icon_delete_meeting">delete meeting</string>
+
+    <!-- EmailPickerFragment -->
+    <string name="button_ok">@android:string/ok</string>
+    <string name="button_cancel">@android:string/cancel</string>
+    <string name="mail_picker_tag">mailPicker</string>
+    <string name="mails_splitter">,\u0020</string>
 
 
 </resources>

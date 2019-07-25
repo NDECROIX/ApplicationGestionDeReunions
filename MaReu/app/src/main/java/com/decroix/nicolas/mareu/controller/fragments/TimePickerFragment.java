@@ -4,25 +4,24 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
 
-import com.decroix.nicolas.mareu.events.GetTimeEvent;
-
-import org.greenrobot.eventbus.EventBus;
+import com.decroix.nicolas.mareu.R;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
-public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+/**
+ * Create TimePickerDialog with the current time selected
+ */
+public class TimePickerFragment extends DialogFragment {
 
-    public static void showTimePickerDialog(FragmentManager fragmentManager) {
-        DialogFragment newFragment = new TimePickerFragment();
-        newFragment.show(fragmentManager, "timePicker");
+    private TimePickerDialog.OnTimeSetListener onTimeSetListener;
+
+    TimePickerFragment(TimePickerDialog.OnTimeSetListener onTimeSetListener) {
+        this.onTimeSetListener = onTimeSetListener;
     }
 
     @NonNull
@@ -32,15 +31,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
 
-        return new TimePickerDialog(getActivity(), TimePickerDialog.THEME_DEVICE_DEFAULT_LIGHT, this, hour, minute,
-                DateFormat.is24HourFormat(getActivity()));
-    }
-
-    @Override
-    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
-        Calendar time = new GregorianCalendar();
-        time.set(Calendar.HOUR_OF_DAY, hourOfDay);
-        time.set(Calendar.MINUTE, minute);
-        EventBus.getDefault().post(new GetTimeEvent(time));
+        return new TimePickerDialog(getActivity(), R.style.dateTimePicker,
+                onTimeSetListener, hour, minute, DateFormat.is24HourFormat(getActivity()));
     }
 }

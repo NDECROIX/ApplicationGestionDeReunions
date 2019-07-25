@@ -11,22 +11,29 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.decroix.nicolas.mareu.R;
-import com.decroix.nicolas.mareu.events.DeleteMeetingEvent;
 import com.decroix.nicolas.mareu.model.Meeting;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.List;
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetingRecyclerViewAdapter.ViewHolder> {
 
+    OnClickMeetingListener callback;
+
+    public MyMeetingRecyclerViewAdapter(OnClickMeetingListener callback) {
+        this.callback = callback;
+    }
+
     private List<Meeting> meetings;
 
-    public MyMeetingRecyclerViewAdapter(List<Meeting> meetings) {
+    private static int randomColor(Meeting meeting) {
+        int color = (int) (meeting.getDateTime().getTime() % 255);
+        return Color.argb(255, color, 200, color);
+    }
+
+    public void updateList(List<Meeting> meetings) {
         this.meetings = meetings;
     }
 
@@ -41,21 +48,20 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         Meeting meeting = meetings.get(position);
 
-        holder.avatar.setColorFilter(randomColor());
+        holder.avatar.setColorFilter(randomColor(meeting));
+        holder.title.setText(meeting.meetingTitleToString());
+        holder.mail.setText(meeting.getEmails());
 
-        holder.title.setText(meeting.meetingDateToString());
-        holder.mail.setText(meeting.getEmail());
-
-        holder.delete.setOnClickListener(v ->
-                EventBus.getDefault().post(new DeleteMeetingEvent(meeting)));
+        holder.delete.setOnClickListener(v -> callback.onClickDeleteMeeting(meeting));
+        holder.itemView.setOnClickListener(v -> callback.onClickMeeting(meeting));
     }
 
-    private static int randomColor() {
-        Random rnd = new Random();
-        return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+    public interface OnClickMeetingListener {
+        void onClickMeeting(Meeting meeting);
+
+        void onClickDeleteMeeting(Meeting meeting);
     }
 
     @Override
@@ -63,7 +69,7 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
         return meetings.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.list_meeting_item_iv_delete)
         ImageView delete;
@@ -74,7 +80,7 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
         @BindView(R.id.list_meeting_item_iv_avatar)
         ImageView avatar;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
         }

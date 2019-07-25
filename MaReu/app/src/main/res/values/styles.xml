@@ -16,4 +16,13 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="dateTimePicker" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="colorAccent">@color/colorPrimary</item>                   <!--header background-->
+    </style>
+
+    <style name="Widget.MaterialComponents.TextInputLayout.FilledBox.DropDownMenu" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1</item>
+    </style>
+
+
 </resources>

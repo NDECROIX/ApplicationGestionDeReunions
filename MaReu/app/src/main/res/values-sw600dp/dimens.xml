@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Margins Gutters -->
+    <dimen name="margins">24dp</dimen>
+    <dimen name="gutters">24dp</dimen>
+
+    <!-- RecyclerView -->
+    <dimen name="margin_rv_top_title">18dp</dimen>
+
+</resources>

@@ -33,21 +33,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margins"
             android:layout_marginEnd="@dimen/margins"
-            android:layout_marginTop="@dimen/gutters"
+            android:layout_marginTop="@dimen/margins"
             android:hint="@string/hint_subject_meeting"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             android:nextFocusRight="@id/add_meeting_et_location"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_meeting_appbar"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_meeting_appbar"
             app:layout_constraintBottom_toTopOf="@+id/add_meeting_til_location" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_meeting_til_location"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="4"
             android:layout_marginStart="@dimen/margins"
-            android:layout_marginEnd="@dimen/margins"
             android:layout_marginTop="@dimen/gutters"
             android:hint="@string/hint_meeting_room"
             app:endIconMode="custom"
@@ -55,8 +55,8 @@
             app:endIconContentDescription="meeting room"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_meeting_et_event"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/add_meeting_til_date">
+            app:layout_constraintEnd_toStartOf="@+id/add_meeting_til_date"
+            app:layout_constraintBottom_toTopOf="@+id/add_meeting_til_mails">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_meeting_et_location"
@@ -71,16 +71,14 @@
             android:layout_height="wrap_content"
             app:layout_constraintHorizontal_weight="3"
             android:layout_marginStart="@dimen/margins"
-            android:layout_marginEnd="@dimen/gutters"
-            android:layout_marginTop="@dimen/gutters"
             android:hint="@string/hint_meeting_date"
             app:endIconMode="custom"
             app:endIconDrawable="@drawable/ic_today_24"
             app:endIconContentDescription="@string/desc_date_of_meeting_picker"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_meeting_til_location"
+            app:layout_constraintStart_toEndOf="@+id/add_meeting_til_location"
+            app:layout_constraintTop_toTopOf="@+id/add_meeting_til_location"
             app:layout_constraintEnd_toStartOf="@+id/add_meeting_til_start_time"
-            app:layout_constraintBottom_toTopOf="@+id/add_meeting_til_mails">
+            app:layout_constraintBottom_toBottomOf="@+id/add_meeting_til_location">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_meeting_et_date"
@@ -97,6 +95,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintHorizontal_weight="2"
             android:layout_marginEnd="@dimen/margins"
+            android:layout_marginStart="@dimen/margins"
             android:hint="@string/hint_meeting_time"
             app:endIconMode="custom"
             app:endIconDrawable="@drawable/ic_time_24"

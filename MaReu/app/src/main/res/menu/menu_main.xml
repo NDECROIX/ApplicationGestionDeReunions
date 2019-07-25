@@ -10,9 +10,9 @@
         app:showAsAction="always">
         <menu>
             <item android:id="@+id/action_sort_date"
-                android:title="Trier par date" />
+                android:title="@string/item_sort_by_date" />
             <item android:id="@+id/action_sort_salle"
-                android:title="Trier par salle" />
+                android:title="@string/item_sort_by_room" />
         </menu>
     </item>
 </menu>
