@@ -12,9 +12,11 @@ public interface ApiService {
 
     void deleteMeeting(Meeting meeting);
 
+    void updateMeeting(Meeting meeting, Meeting update);
+
     void sortByDate();
 
     void sortByMeetingRoom();
 
-    boolean availableMeetingRoom(Date date, String meetingRoom);
+    boolean availableMeetingRoom(Date date, String meetingRoom, Meeting toUpdate);
 }

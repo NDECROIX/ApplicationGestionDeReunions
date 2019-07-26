@@ -26,6 +26,10 @@ public class MeetingRepository {
         apiService.deleteMeeting(meeting);
     }
 
+    public void updateMeeting(Meeting meeting, Meeting update){
+        apiService.updateMeeting(meeting, update);
+    }
+
     public void sortByDate() {
         apiService.sortByDate();
     }
@@ -34,7 +38,7 @@ public class MeetingRepository {
         apiService.sortByMeetingRoom();
     }
 
-    public boolean availableMeetingRoom(Date date, String meetingRoom) {
-        return apiService.availableMeetingRoom(date, meetingRoom);
+    public boolean availableMeetingRoom(Date date, String meetingRoom, Meeting toUpdate) {
+        return apiService.availableMeetingRoom(date, meetingRoom, toUpdate);
     }
 }

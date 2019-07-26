@@ -36,6 +36,12 @@ public class MeetingApiService implements ApiService {
         this.meetings.remove(meeting);
     }
 
+    @Override
+    public void updateMeeting(Meeting meeting, Meeting update) {
+        meetings.remove(meeting);
+        meetings.add(update);
+    }
+
     /**
      * Sort the list of meetings by date
      */
@@ -62,7 +68,11 @@ public class MeetingApiService implements ApiService {
      * @return returns true if the meeting room is available
      */
     @Override
-    public boolean availableMeetingRoom(Date date, String meetingRoom) {
+    public boolean availableMeetingRoom(Date date, String meetingRoom, Meeting toUpdate) {
+        List<Meeting> meetings = this.meetings;
+        if (toUpdate != null){
+            meetings.remove(toUpdate);
+        }
         for (Meeting meeting : meetings) {
             Date dateRangeA = new Date(meeting.getDateTime().getTime() - TimeUnit.MINUTES.toMillis(45));
             Date dateRangeB = new Date(meeting.getDateTime().getTime() + TimeUnit.MINUTES.toMillis(45));

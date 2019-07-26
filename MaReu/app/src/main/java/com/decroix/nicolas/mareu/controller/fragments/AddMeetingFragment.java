@@ -182,19 +182,20 @@ public class AddMeetingFragment extends Fragment
 
     // Save the meeting
     private void saveMeeting() {
-        repository.deleteMeeting(meetingToUpdate);
-        if (!checkMeeting()) {
-            repository.addMeeting(meetingToUpdate);
-        } else {
+        if (checkMeeting()) {
             String name, location, emails;
             name = meetingName.getText().toString();
             location = meetingLocation.getText().toString();
             emails = meetingMails.getText().toString();
-
-            repository.addMeeting(new Meeting(name, location, date, emails));
-
-            if (update) showToast(R.string.toast_update_meeting);
-            else showToast(R.string.toast_add_meeting);
+            Meeting meeting = new Meeting(name, location, date, emails);
+            if (update){
+                repository.updateMeeting(meetingToUpdate, meeting);
+                showToast(R.string.toast_update_meeting);
+            }
+            else{
+                repository.addMeeting(meeting);
+                showToast(R.string.toast_add_meeting);
+            }
             getFragmentManager().popBackStack();
         }
     }
@@ -257,7 +258,7 @@ public class AddMeetingFragment extends Fragment
         if (date.before(new Date())) {
             return false;
         } else {
-            return repository.availableMeetingRoom(date, meetingLocation.getText().toString());
+            return repository.availableMeetingRoom(date, meetingLocation.getText().toString(), meetingToUpdate);
         }
     }
 
