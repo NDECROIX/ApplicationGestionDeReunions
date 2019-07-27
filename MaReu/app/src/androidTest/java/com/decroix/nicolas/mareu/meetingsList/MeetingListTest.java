@@ -6,12 +6,10 @@ import androidx.test.rule.ActivityTestRule;
 
 import com.decroix.nicolas.mareu.R;
 import com.decroix.nicolas.mareu.controller.activities.MeetingActivity;
-import com.decroix.nicolas.mareu.di.DependencyInjector;
 import com.decroix.nicolas.mareu.model.Meeting;
 import com.decroix.nicolas.mareu.repository.MeetingRepository;
 import com.decroix.nicolas.mareu.utils.DeleteItem;
 import com.decroix.nicolas.mareu.utils.GetItemDataRecyclerView;
-import com.decroix.nicolas.mareu.utils.RecyclerViewItemCountAssertion;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -19,7 +17,6 @@ import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -27,7 +24,6 @@ import java.util.List;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -87,13 +83,22 @@ public class MeetingListTest {
     }
 
     /**
+     * When we click on item delete from the RecyclerView an AlertDialog is displayed
+     */
+    @Test
+    public void myMeetingList_clickDelete_shouldShowAlertDialog(){
+        onView(withId(R.id.activity_list_meeting_rv_meetings)).perform(RecyclerViewActions.actionOnItemAtPosition(0, new DeleteItem()));
+        onView(withText(R.string.title_delete_alert_dialog)).check(matches(isDisplayed()));
+    }
+
+    /**
      * When we delete an item, the item is no more shown
      */
     @Test
     public void myMeetingsList_deleteItem_shouldRemoveItem() {
         onView(withId(R.id.activity_list_meeting_rv_meetings)).check(withItemCount(repository.getMeetings().size()));
-        onView(withId(R.id.activity_list_meeting_rv_meetings))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteItem()));
+        onView(withId(R.id.activity_list_meeting_rv_meetings)).perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteItem()));
+        onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.activity_list_meeting_rv_meetings)).check(withItemCount(COUNT_MEETINGS - 1));
     }
 

@@ -128,14 +128,13 @@ public class ListMeetingsFragment extends Fragment implements MyMeetingRecyclerV
 
     @Override
     public void onClickDeleteMeeting(Meeting meeting) {
-        repository.deleteMeeting(meeting);
-        Toast.makeText(getContext(), "Réunion supprimée", Toast.LENGTH_SHORT).show();
-        loadData();
-        /*AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Supprimer la réunion : " + meeting.meetingTitleToString() + " ?")
-                .setPositiveButton("Supprimer", (dialog, id) -> {
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(R.string.title_delete_alert_dialog).setMessage(meeting.meetingTitleToString())
+                .setPositiveButton(R.string.delete_button_alert_dialog, (dialog, id) -> {
+                    repository.deleteMeeting(meeting);
+                    Toast.makeText(getContext(), R.string.toast_message_alert_dialog, Toast.LENGTH_SHORT).show();
+                    loadData();
                     dialog.dismiss();
-                }).setNegativeButton("Retour", ((dialog, id) -> dialog.cancel())).show();*/
+                }).setNegativeButton(R.string.back_button_alert_dialog, ((dialog, id) -> dialog.cancel())).show();
     }
 }

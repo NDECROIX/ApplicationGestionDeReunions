@@ -36,6 +36,11 @@
     <string name="desc_drawable_meeting_circle">meeting_circle</string>
     <string name="desc_icon_delete_meeting">delete meeting</string>
 
+    <string name="title_delete_alert_dialog">Suppression de la réunion:</string>
+    <string name="delete_button_alert_dialog">Supprimer</string>
+    <string name="back_button_alert_dialog">Retour</string>
+    <string name="toast_message_alert_dialog">Réunion supprimée</string>
+
     <!-- EmailPickerFragment -->
     <string name="button_ok">@android:string/ok</string>
     <string name="button_cancel">@android:string/cancel</string>
