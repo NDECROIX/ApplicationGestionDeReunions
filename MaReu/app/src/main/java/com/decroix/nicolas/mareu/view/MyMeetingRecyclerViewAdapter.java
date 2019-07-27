@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.decroix.nicolas.mareu.R;
 import com.decroix.nicolas.mareu.model.Meeting;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

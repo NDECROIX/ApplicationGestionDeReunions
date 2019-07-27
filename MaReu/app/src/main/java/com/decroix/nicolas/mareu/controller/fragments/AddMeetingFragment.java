@@ -127,7 +127,8 @@ public class AddMeetingFragment extends Fragment
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         activity.getSupportActionBar().setHomeActionContentDescription(getString(R.string.add_meeting_home_item));
         activity.getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_24);
-        activity.getSupportActionBar().setTitle(getString(R.string.add_meeting_title_toolbar));
+        String title = !update ? getString(R.string.add_meeting_title_toolbar) : getString(R.string.toast_update_meeting);
+        activity.getSupportActionBar().setTitle(title);
         setHasOptionsMenu(true);
     }
 
@@ -257,9 +258,8 @@ public class AddMeetingFragment extends Fragment
     private boolean checkAvailability() {
         if (date.before(new Date())) {
             return false;
-        } else {
-            return repository.availableMeetingRoom(date, meetingLocation.getText().toString(), meetingToUpdate);
         }
+        return repository.availableMeetingRoom(date, meetingLocation.getText().toString(), meetingToUpdate);
     }
 
     /**

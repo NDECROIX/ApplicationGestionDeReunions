@@ -25,6 +25,7 @@ import com.decroix.nicolas.mareu.model.Meeting;
 import com.decroix.nicolas.mareu.repository.MeetingRepository;
 import com.decroix.nicolas.mareu.view.MyMeetingRecyclerViewAdapter;
 
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

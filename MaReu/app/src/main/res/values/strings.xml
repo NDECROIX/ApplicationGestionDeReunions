@@ -4,6 +4,7 @@
 
     <!-- AddMeetingFragment -->
     <string name="add_meeting_title_toolbar">Ajouter une réunion</string>
+    <string name="Update_meeting_title_toolbar">Modification de la réunion</string>
     <string name="add_meeting_home_item">Back to ListMeetingFragment</string>
 
     <string name="toast_room_used">Salle de réunion indisponible</string>

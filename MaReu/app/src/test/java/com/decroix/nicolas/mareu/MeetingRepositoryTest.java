@@ -63,6 +63,15 @@ public class MeetingRepositoryTest {
     }
 
     @Test
+    public void updateMeetingRoomWithSuccess() {
+        addMeetingToRepository();
+        Meeting update = dummyMeetings.get(0);
+        update.setSubject("New Subject");
+        repository.updateMeeting(dummyMeetings.get(0), update);
+        assertEquals(update, dummyMeetings.get(0));
+    }
+
+    @Test
     public void sortByDateWithSuccess() {
         addMeetingToRepository();
         repository.sortByDate();
@@ -87,6 +96,6 @@ public class MeetingRepositoryTest {
         addMeetingToRepository();
         assertFalse(repository.availableMeetingRoom(
                 new GregorianCalendar(2019, 7, 31, 10, 45)
-                        .getTime(), "Salle 2"));
+                        .getTime(), "Salle 2", null));
     }
 }
