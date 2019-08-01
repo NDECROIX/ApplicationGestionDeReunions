@@ -18,5 +18,5 @@ public interface ApiService {
 
     void sortByMeetingRoom();
 
-    boolean availableMeetingRoom(Date date, String meetingRoom, Meeting toUpdate);
+    boolean isMeetingRoomAvailable(Date date, String meetingRoom, Meeting toUpdate);
 }

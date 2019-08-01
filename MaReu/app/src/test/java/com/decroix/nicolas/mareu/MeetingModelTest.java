@@ -21,7 +21,7 @@ public class MeetingModelTest {
     public void createMeeting() {
         String subject = "Subject";
         String location = "Location";
-        String mails = "lamzon@lamzon.com, lamzon@lamzon.com";
+        String mails = "lamzone@lamzone.com, lamzone@lamzone.com";
         Date date = new GregorianCalendar(2019, 6, 13, 12, 8).getTime();
         meeting = new Meeting(subject, location, date, mails);
     }

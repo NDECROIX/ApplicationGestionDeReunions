@@ -46,7 +46,7 @@ import butterknife.ButterKnife;
  * Fragment that implements the creation of a meeting
  */
 public class AddMeetingFragment extends Fragment
-        implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener, MailPickerFragment.OnMailsSelectedListener {
+        implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     private static final String MEETING_ARGUMENT = "meetingArgument";
 
@@ -115,9 +115,9 @@ public class AddMeetingFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_meeting, container, false);
         ButterKnife.bind(this, view);
+        setDetails();
         configToolbar();
         configListeners();
-        setDetails();
         return view;
     }
 
@@ -139,9 +139,6 @@ public class AddMeetingFragment extends Fragment
 
         layoutMeetingTime.setEndIconOnClickListener(v ->
                 new TimePickerFragment(this).show(getFragmentManager(), getString(R.string.time_picker_tag)));
-
-        layoutMeetingMails.setEndIconOnClickListener(v ->
-                new MailPickerFragment(this).show(getFragmentManager(), getString(R.string.mail_picker_tag)));
     }
 
     @Override
@@ -158,13 +155,6 @@ public class AddMeetingFragment extends Fragment
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_add_meeting, menu);
         super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public void onMailsSelected(List<String> emails) {
-        if (!TextUtils.isEmpty(meetingMails.getText()))
-            meetingMails.append(getString(R.string.mails_splitter));
-        meetingMails.append(TextUtils.join(getString(R.string.mails_splitter), emails));
     }
 
     @Override

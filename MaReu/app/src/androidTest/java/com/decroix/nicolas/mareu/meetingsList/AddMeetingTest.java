@@ -62,7 +62,7 @@ public class AddMeetingTest {
         onView(withId(R.id.add_meeting_et_location)).perform(replaceText("Salle A"));
         onView(withId(R.id.add_meeting_et_date)).perform(replaceText("12/07/2020"));
         onView(withId(R.id.add_meeting_et_time)).perform(replaceText("18:45"));
-        onView(withId(R.id.add_meeting_et_mails)).perform(replaceText("lamzon@gmail.com"));
+        onView(withId(R.id.add_meeting_et_mails)).perform(replaceText("lamzone@gmail.com"));
     }
 
     /**
@@ -94,15 +94,6 @@ public class AddMeetingTest {
     }
 
     /**
-     * When we click on the mail icon, MailPickerFragment starts
-     */
-    @Test
-    public void myAddMeeting_clickMailPicker_shouldShowMailPickerFragment() {
-        onView(withContentDescription(R.string.desc_mails_of_meeting_picker)).perform(click());
-        onView(withText(R.string.mails_picker_title)).check(matches(isDisplayed()));
-    }
-
-    /**
      * When we click on the date of DatePickerFragment, the date field catches it
      */
     @Test
@@ -128,19 +119,6 @@ public class AddMeetingTest {
     }
 
     /**
-     * When we select participants in the list, the mails field catches it
-     */
-    @Test
-    public void myAddMeeting_chooseParticipants_shouldShowTheme() {
-        onView(withId(R.id.add_meeting_et_mails)).check(matches(withText("")));
-        onView(withContentDescription(R.string.desc_mails_of_meeting_picker)).perform(click());
-        onView(withText("amandine@lamzon.com")).perform(click());
-        onView(withText("alex@lamzon.com")).perform(click());
-        onView(withResourceName("button1")).perform(click());
-        onView(withId(R.id.add_meeting_et_mails)).check(matches(withText("amandine@lamzon.com, alex@lamzon.com")));
-    }
-
-    /**
      * When we click on the save item with all the fields empty, we stay on the current fragment
      * and display the toast
      */
@@ -149,7 +127,7 @@ public class AddMeetingTest {
 
         onView(withId(R.id.add_meeting_item_save)).perform(click());
         onView(withId(R.id.fragment_add_meeting)).check(matches(isDisplayed()));
-        onView(withText(R.string.toast_empty_fields))
+        onView(withResourceName("message"))
                 .inRoot(withDecorView(not(is(mActivity.getWindow().getDecorView())))).check(matches(isDisplayed()));
     }
 

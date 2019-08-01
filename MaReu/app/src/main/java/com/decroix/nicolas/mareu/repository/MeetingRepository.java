@@ -39,6 +39,6 @@ public class MeetingRepository {
     }
 
     public boolean availableMeetingRoom(Date date, String meetingRoom, Meeting toUpdate) {
-        return apiService.availableMeetingRoom(date, meetingRoom, toUpdate);
+        return apiService.isMeetingRoomAvailable(date, meetingRoom, toUpdate);
     }
 }

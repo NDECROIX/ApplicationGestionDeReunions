@@ -60,11 +60,11 @@ public class MeetingListTest {
     public void fillMeetingsList() {
         meetings = Arrays.asList(
                 new Meeting("Sujet 1", "Salle 2", new GregorianCalendar(2019, 7, 31).getTime(),
-                        "lamzon@gmail.com, lamzon@gmail.com, lamzon@gmail.com"),
+                        "lamzone@gmail.com, lamzone@gmail.com, lamzone@gmail.com"),
                 new Meeting("Sujet 2", "Salle 1", new GregorianCalendar(2019, 7, 10).getTime(),
-                        "lamzon@gmail.com, lamzon@gmail.com, lamzon@gmail.com"),
+                        "lamzone@gmail.com, lamzone@gmail.com, lamzone@gmail.com"),
                 new Meeting("Sujet 3", "Salle 3", new GregorianCalendar(2019, 7, 15).getTime(),
-                        "lamzon@gmail.com, lamzon@gmail.com, lamzon@gmail.com")
+                        "lamzone@gmail.com, lamzone@gmail.com, lamzone@gmail.com")
         );
 
         repository.addMeeting(meetings.get(0));
@@ -103,22 +103,22 @@ public class MeetingListTest {
     }
 
     /**
-     * When we click on the floating action button, AddMeetingFragment should be show
-     */
-    @Test
-    public void myMeetingList_clickFab_shouldShowAddMeetingFragment() {
-
-        onView(withId(R.id.activity_list_meeting_fab)).perform(click());
-        onView(withId(R.id.fragment_add_meeting)).check(matches(isDisplayed()));
-    }
-
-    /**
      * When we click on one item, AddMeetingFragment should be show
      */
     @Test
     public void MyMeetingList_clickItem_shouldShowAddMeetingFragment() {
         onView(withId(R.id.activity_list_meeting_rv_meetings))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
+        onView(withId(R.id.fragment_add_meeting)).check(matches(isDisplayed()));
+    }
+
+    /**
+     * When we click on the floating action button, AddMeetingFragment should be show
+     */
+    @Test
+    public void myMeetingList_clickFab_shouldShowAddMeetingFragment() {
+
+        onView(withId(R.id.activity_list_meeting_fab)).perform(click());
         onView(withId(R.id.fragment_add_meeting)).check(matches(isDisplayed()));
     }
 

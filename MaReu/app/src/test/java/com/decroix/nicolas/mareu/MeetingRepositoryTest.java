@@ -27,13 +27,13 @@ public class MeetingRepositoryTest {
         dummyMeetings = Arrays.asList(
                 new Meeting("Sujet 1", "Salle 2", new GregorianCalendar(
                         2019, 7, 31, 10, 30).getTime(),
-                        "lamzon@gmail.com, lamzon@gmail.com, lamzon@gmail.com"),
+                        "lamzone@gmail.com, lamzone@gmail.com, lamzone@gmail.com"),
                 new Meeting("Sujet 2", "Salle 1", new GregorianCalendar(
                         2019, 7, 10, 10, 30).getTime(),
-                        "lamzon@gmail.com, lamzon@gmail.com, lamzon@gmail.com"),
+                        "lamzone@gmail.com, lamzone@gmail.com, lamzone@gmail.com"),
                 new Meeting("Sujet 3", "Salle 3", new GregorianCalendar(
                         2019, 7, 15, 10, 30).getTime(),
-                        "lamzon@gmail.com, lamzon@gmail.com, lamzon@gmail.com"));
+                        "lamzone@gmail.com, lamzone@gmail.com, lamzone@gmail.com"));
     }
 
     @DataPoint
