@@ -16,6 +16,7 @@ import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 import org.junit.runner.RunWith;
 
+import static androidx.test.espresso.Espresso.onIdle;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.replaceText;
@@ -98,7 +99,7 @@ public class AddMeetingTest {
      */
     @Test
     public void myAddMeeting_chooseTheDate_shouldShowDate() {
-
+        onIdle();
         onView(withId(R.id.add_meeting_et_date)).check(matches(withText("")));
         onView(withContentDescription(R.string.desc_date_of_meeting_picker)).perform(click());
         onView(withResourceName("datePicker")).check(matches(isDisplayed()));
@@ -111,6 +112,7 @@ public class AddMeetingTest {
      */
     @Test
     public void myAddMeeting_chooseTheTime_shouldShowTime() {
+        onIdle();
         onView(withId(R.id.add_meeting_et_time)).check(matches(withText("")));
         onView(withContentDescription(R.string.desc_time_of_meeting_picker)).perform(click());
         onView(withResourceName("timePicker")).check(matches(isDisplayed()));

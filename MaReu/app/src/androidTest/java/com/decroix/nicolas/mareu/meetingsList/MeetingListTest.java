@@ -21,6 +21,7 @@ import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import static androidx.test.espresso.Espresso.onIdle;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -96,6 +97,7 @@ public class MeetingListTest {
      */
     @Test
     public void myMeetingsList_deleteItem_shouldRemoveItem() {
+        onIdle();
         onView(withId(R.id.activity_list_meeting_rv_meetings)).check(withItemCount(repository.getMeetings().size()));
         onView(withId(R.id.activity_list_meeting_rv_meetings)).perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteItem()));
         onView(withId(android.R.id.button1)).perform(click());
