@@ -45,7 +45,7 @@ public class MeetingApiService implements ApiService {
     @Override
     public void updateMeeting(Meeting meeting, Meeting update) {
         for (int i = 0; i < meetings.size(); i++) {
-            if (meetings.get(i).equals(meeting)) {
+            if (meetings.get(i).isContentIdentical(meeting)) {
                 meetings.set(i, update);
                 break;
             }
@@ -67,7 +67,7 @@ public class MeetingApiService implements ApiService {
     @Override
     public void sortByMeetingRoom() {
         Collections.sort(meetings, (meetingOne, meetingTow) ->
-                meetingOne.getLocation().compareTo(meetingTow.getLocation()));
+                meetingOne.getMeetingRoom().compareTo(meetingTow.getMeetingRoom()));
     }
 
     /**
@@ -88,7 +88,7 @@ public class MeetingApiService implements ApiService {
             Date dateRangeB = new Date(meeting.getDateTime().getTime() + TimeUnit.MINUTES.toMillis(45));
 
             if (date.after(dateRangeA) && date.before(dateRangeB) &&
-                    meeting.getLocation().contentEquals(meetingRoom)) {
+                    meeting.getMeetingRoom().contentEquals(meetingRoom)) {
                 return false;
             }
         }

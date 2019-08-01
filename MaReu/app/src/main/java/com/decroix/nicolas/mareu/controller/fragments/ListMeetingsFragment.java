@@ -84,7 +84,7 @@ public class ListMeetingsFragment extends Fragment implements MyMeetingRecyclerV
                 sortMeetingDate();
                 return true;
             case R.id.action_sort_salle:
-                sortMeetingLocation();
+                sortMeetingRoom();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -98,7 +98,7 @@ public class ListMeetingsFragment extends Fragment implements MyMeetingRecyclerV
     }
 
     // Sort meetings by meeting room
-    private void sortMeetingLocation() {
+    private void sortMeetingRoom() {
         repository.sortByMeetingRoom();
         loadData();
     }

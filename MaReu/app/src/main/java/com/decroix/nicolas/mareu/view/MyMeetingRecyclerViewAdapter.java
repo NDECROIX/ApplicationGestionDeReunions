@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.decroix.nicolas.mareu.R;
 import com.decroix.nicolas.mareu.model.Meeting;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -21,18 +20,18 @@ import butterknife.ButterKnife;
 
 public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeetingRecyclerViewAdapter.ViewHolder> {
 
-    OnClickMeetingListener callback;
+    private OnClickMeetingListener callback;
+
+    public interface OnClickMeetingListener {
+        void onClickMeeting(Meeting meeting);
+        void onClickDeleteMeeting(Meeting meeting);
+    }
 
     public MyMeetingRecyclerViewAdapter(OnClickMeetingListener callback) {
         this.callback = callback;
     }
 
     private List<Meeting> meetings;
-
-    private static int randomColor(Meeting meeting) {
-        int color = (int) (meeting.getDateTime().getTime() % 255);
-        return Color.argb(255, color, 200, color);
-    }
 
     public void updateList(List<Meeting> meetings) {
         this.meetings = meetings;
@@ -59,10 +58,9 @@ public class MyMeetingRecyclerViewAdapter extends RecyclerView.Adapter<MyMeeting
         holder.itemView.setOnClickListener(v -> callback.onClickMeeting(meeting));
     }
 
-    public interface OnClickMeetingListener {
-        void onClickMeeting(Meeting meeting);
-
-        void onClickDeleteMeeting(Meeting meeting);
+    private static int randomColor(Meeting meeting) {
+        int color = (int) (meeting.getDateTime().getTime() % 255);
+        return Color.argb(255, color, 200, color);
     }
 
     @Override

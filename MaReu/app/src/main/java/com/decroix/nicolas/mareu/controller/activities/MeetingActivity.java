@@ -12,20 +12,17 @@ import com.decroix.nicolas.mareu.controller.fragments.ListMeetingsFragment;
  */
 public class MeetingActivity extends BaseActivity {
 
-    public ListMeetingsFragment listMeetingFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_meeting);
+        setContentView(R.layout.activity_meeting);
         resetMeetingRepository();
         startFragment();
     }
 
     private void startFragment() {
-        listMeetingFragment = new ListMeetingsFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.activity_list_meeting_placeholder, listMeetingFragment);
+        transaction.replace(R.id.activity_list_meeting_placeholder, new ListMeetingsFragment());
         transaction.commit();
     }
 }

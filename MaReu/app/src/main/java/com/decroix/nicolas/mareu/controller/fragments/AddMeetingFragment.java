@@ -94,22 +94,6 @@ public class AddMeetingFragment extends Fragment
         repository = ((MeetingActivity) getActivity()).getMeetingRepository();
     }
 
-    private void setDetails() {
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            meetingToUpdate = (Meeting) bundle.get(MEETING_ARGUMENT);
-        }
-        if (meetingToUpdate != null) {
-            meetingName.setText(meetingToUpdate.getSubject());
-            meetingLocation.setText(meetingToUpdate.getLocation());
-            meetingDate.setText(meetingToUpdate.getDateString());
-            meetingTime.setText(meetingToUpdate.getTimeString());
-            meetingMails.setText(meetingToUpdate.getEmails());
-            update = true;
-        }
-
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -119,6 +103,21 @@ public class AddMeetingFragment extends Fragment
         configToolbar();
         configListeners();
         return view;
+    }
+
+    private void setDetails() {
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            meetingToUpdate = (Meeting) bundle.get(MEETING_ARGUMENT);
+        }
+        if (meetingToUpdate != null) {
+            meetingName.setText(meetingToUpdate.getSubject());
+            meetingLocation.setText(meetingToUpdate.getMeetingRoom());
+            meetingDate.setText(meetingToUpdate.getDateString());
+            meetingTime.setText(meetingToUpdate.getTimeString());
+            meetingMails.setText(meetingToUpdate.getEmails());
+            update = true;
+        }
     }
 
     private void configToolbar() {
@@ -179,11 +178,10 @@ public class AddMeetingFragment extends Fragment
             location = meetingLocation.getText().toString();
             emails = meetingMails.getText().toString();
             Meeting meeting = new Meeting(name, location, date, emails);
-            if (update){
+            if (update) {
                 repository.updateMeeting(meetingToUpdate, meeting);
                 showToast(R.string.toast_update_meeting);
-            }
-            else{
+            } else {
                 repository.addMeeting(meeting);
                 showToast(R.string.toast_add_meeting);
             }

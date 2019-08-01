@@ -98,4 +98,9 @@ public class MeetingRepositoryTest {
                 new GregorianCalendar(2019, 7, 31, 10, 45)
                         .getTime(), "Salle 2", null));
     }
+
+    @Test
+    public void checkMeetingIsEquals() {
+        assertTrue(dummyMeetings.get(0).isContentIdentical(dummyMeetings.get(0)));
+    }
 }

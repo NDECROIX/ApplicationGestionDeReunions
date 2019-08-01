@@ -86,7 +86,6 @@
                 android:id="@+id/add_meeting_et_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="datetime"
                 android:nextFocusDown="@id/add_meeting_et_time"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -109,8 +108,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_meeting_et_time"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="time"/>
+                android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

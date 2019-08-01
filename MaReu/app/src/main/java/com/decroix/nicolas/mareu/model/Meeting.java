@@ -19,7 +19,7 @@ public class Meeting implements Serializable {
     /**
      * Meeting room
      */
-    private String location;
+    private String meetingRoom;
 
     /**
      * Date and time
@@ -35,13 +35,13 @@ public class Meeting implements Serializable {
      * Constructor
      *
      * @param subject  Meeting subject
-     * @param location Meeting room
+     * @param meetingRoom Meeting room
      * @param dateTime Date and time
      * @param email    Participants' emails address
      */
-    public Meeting(String subject, String location, Date dateTime, String email) {
+    public Meeting(String subject, String meetingRoom, Date dateTime, String email) {
         this.subject = subject;
-        this.location = location;
+        this.meetingRoom = meetingRoom;
         this.dateTime = dateTime;
         this.emails = email;
     }
@@ -56,12 +56,12 @@ public class Meeting implements Serializable {
         this.subject = subject;
     }
 
-    public String getLocation() {
-        return location;
+    public String getMeetingRoom() {
+        return meetingRoom;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setMeetingRoom(String meetingRoom) {
+        this.meetingRoom = meetingRoom;
     }
 
     // SETTER
@@ -89,7 +89,7 @@ public class Meeting implements Serializable {
      */
     public String meetingTitleToString() {
         DateFormat dateFormat = new SimpleDateFormat("dd MMM HH:mm", Locale.FRANCE);
-        return subject + " - " + dateFormat.format(dateTime) + " - " + location;
+        return subject + " - " + dateFormat.format(dateTime) + " - " + meetingRoom;
     }
 
     public String getDateString() {
@@ -100,5 +100,17 @@ public class Meeting implements Serializable {
     public String getTimeString() {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.FRANCE);
         return timeFormat.format(dateTime);
+    }
+
+    public boolean isContentIdentical(Meeting meeting){
+        if(meeting == this) return true;
+        boolean equalsSubject = (this.subject != null && this.subject.equals(meeting.getSubject())) || (this.subject == null && meeting.subject == null);
+        boolean equalsMeetingRoom = (this.meetingRoom != null && this.meetingRoom.equals(meeting.getMeetingRoom())) ||
+                (this.meetingRoom == null && meeting.getMeetingRoom() == null);
+        boolean equalsDateTime = this.dateTime != null && this.dateTime.equals(meeting.getDateTime())||
+                (this.dateTime == null && meeting.getDateTime() == null);
+        boolean equalsMails = this.emails != null && this.emails.equals(meeting.getEmails())||
+                (this.emails == null && meeting.getEmails() == null);
+        return equalsSubject && equalsMeetingRoom && equalsDateTime && equalsMails;
     }
 }

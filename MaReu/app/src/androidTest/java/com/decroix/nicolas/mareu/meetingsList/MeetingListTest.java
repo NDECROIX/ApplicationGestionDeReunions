@@ -87,7 +87,7 @@ public class MeetingListTest {
      * When we click on item delete from the RecyclerView an AlertDialog is displayed
      */
     @Test
-    public void myMeetingList_clickDelete_shouldShowAlertDialog(){
+    public void myMeetingList_clickDelete_shouldShowAlertDialog() {
         onView(withId(R.id.activity_list_meeting_rv_meetings)).perform(RecyclerViewActions.actionOnItemAtPosition(0, new DeleteItem()));
         onView(withText(R.string.title_delete_alert_dialog)).check(matches(isDisplayed()));
     }
