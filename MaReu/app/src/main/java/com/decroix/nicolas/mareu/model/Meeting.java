@@ -101,10 +101,11 @@ public class Meeting implements Serializable {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.FRANCE);
         return timeFormat.format(dateTime);
     }
-
+    
     public boolean isContentIdentical(Meeting meeting){
         if(meeting == this) return true;
-        boolean equalsSubject = (this.subject != null && this.subject.equals(meeting.getSubject())) || (this.subject == null && meeting.subject == null);
+        boolean equalsSubject = (this.subject != null && this.subject.equals(meeting.getSubject())) ||
+                (this.subject == null && meeting.subject == null);
         boolean equalsMeetingRoom = (this.meetingRoom != null && this.meetingRoom.equals(meeting.getMeetingRoom())) ||
                 (this.meetingRoom == null && meeting.getMeetingRoom() == null);
         boolean equalsDateTime = this.dateTime != null && this.dateTime.equals(meeting.getDateTime())||
